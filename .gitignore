@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local datasets and generated output
+/data/*.csv
+*.png
+*.pdf
+
+# Editor and OS files
+.DS_Store
+.vscode/
+.idea/
