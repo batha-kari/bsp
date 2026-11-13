@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9f0f2">
+  <meta name="description" content="Download the Biomedical Signal Processing code collection as a ZIP folder.">
+  <title>Biomedical Signal Processing — Code Archive</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #e9f0f2;
+      --card: #fbfcfa;
+      --ink: #17313c;
+      --muted: #55717b;
+      --line: #c9d8dc;
+      --signal: #d94d37;
+      --teal: #287d7a;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: Inter, "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 32px;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: linear-gradient(#d7e3e6 1px, transparent 1px), linear-gradient(90deg, #d7e3e6 1px, transparent 1px);
+      background-size: 32px 32px;
+      font-family: var(--sans);
+    }
+
+    .sheet {
+      width: min(100%, 1040px);
+      min-height: 590px;
+      display: grid;
+      grid-template-columns: 1.06fr .94fr;
+      background: var(--card);
+      border: 1px solid #d5e0e2;
+      box-shadow: 0 24px 70px #19384518;
+    }
+
+    .copy {
+      padding: clamp(32px, 6vw, 72px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .eyebrow, .meta, .topic-label, .index {
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 54px;
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .pulse-mark { width: 29px; height: 22px; }
+
+    h1 {
+      max-width: 540px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 6vw, 68px);
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: .99;
+    }
+
+    .intro {
+      max-width: 440px;
+      margin: 24px 0 30px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .download {
+      min-height: 58px;
+      padding: 0 21px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+      background: var(--signal);
+      border: 0;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background-color 160ms ease, transform 160ms ease;
+    }
+
+    .download:hover { background: #bb3f2d; transform: translateY(-2px); }
+    .download:focus-visible { outline: 3px solid var(--teal); outline-offset: 4px; }
+    .download svg { width: 19px; height: 19px; }
+
+    .meta {
+      margin: 13px 0 0;
+      color: #6b858d;
+      font-size: 10px;
+      letter-spacing: .07em;
+    }
+
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 42px;
+    }
+
+    .topic {
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      color: #3d5c67;
+      font-size: 11px;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 590px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 42px;
+      background: #dce9e9;
+      border-left: 1px solid var(--line);
+    }
+
+    .visual::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background-image: linear-gradient(#b8cecf 1px, transparent 1px), linear-gradient(90deg, #b8cecf 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: .38;
+    }
+
+    .trace-card, .contents { position: relative; z-index: 1; }
+
+    .trace-card {
+      padding: 22px 22px 16px;
+      background: #f7faf8;
+      border: 1px solid #c5d6d7;
+      box-shadow: 0 14px 40px #153c3c12;
+    }
+
+    .trace-head {
+      display: flex;
+      justify-content: space-between;
+      color: #55717b;
+      font: 10px var(--mono);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .trace {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 22px 0 10px;
+    }
+
+    .trace-labels {
+      display: flex;
+      justify-content: space-between;
+      color: #789096;
+      font: 9px var(--mono);
+    }
+
+    .contents { margin: 28px 0 0 28px; }
+    .topic-label { margin: 0 0 15px; color: var(--teal); font-size: 10px; font-weight: 700; }
+    .contents ul { margin: 0; padding: 0; list-style: none; }
+    .contents li { padding: 8px 0; color: #375560; font-size: 13px; border-bottom: 1px solid #bfd0d2; }
+    .contents li:last-child { border-bottom: 0; }
+    .index { margin-right: 12px; color: #8ba0a4; font-size: 9px; }
+
+    footer {
+      position: absolute;
+      right: 25px;
+      bottom: 22px;
+      z-index: 1;
+      font: 10px var(--mono);
+    }
+
+    footer a { color: #42666d; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+    @media (max-width: 760px) {
+      body { padding: 16px; }
+      .sheet { grid-template-columns: 1fr; }
+      .copy { min-height: 500px; }
+      .eyebrow { margin-bottom: 42px; }
+      .visual { min-height: 430px; border-top: 1px solid var(--line); border-left: 0; padding: 28px; }
+      .contents { margin-left: 4px; }
+      footer { position: relative; inset: auto; align-self: flex-end; margin-top: 30px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="copy" aria-labelledby="page-title">
+      <p class="eyebrow">
+        <svg class="pulse-mark" viewBox="0 0 40 28" aria-hidden="true"><path d="M1 15h10l4-9 7 18 6-14 3 5h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/></svg>
+        Code archive · 11 scripts
+      </p>
+      <h1 id="page-title">Biomedical<br>signal processing</h1>
+      <p class="intro">A compact collection of ECG, PPG, respiratory, and signal fundamentals examples. Download the complete project as one ZIP, then extract it to get the folder.</p>
+      <a class="download" href="https://github.com/batha-kari/bsp/archive/refs/heads/master.zip" aria-label="Download all project files as a ZIP archive">
+        <span>Download all code</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="meta">ZIP archive · Python scripts + README · CSV datasets not included</p>
+      <div class="topics" aria-label="Topics included">
+        <span class="topic">ECG</span>
+        <span class="topic">PPG</span>
+        <span class="topic">Respiratory</span>
+        <span class="topic">Fundamentals</span>
+      </div>
+    </section>
+
+    <aside class="visual" aria-label="Project contents">
+      <div class="trace-card">
+        <div class="trace-head"><span>Signal / 01</span><span>ECG · sample trace</span></div>
+        <svg class="trace" viewBox="0 0 460 150" role="img" aria-label="Illustrative ECG waveform">
+          <defs><pattern id="small-grid" width="23" height="15" patternUnits="userSpaceOnUse"><path d="M23 0H0V15" fill="none" stroke="#d9e5e3" stroke-width="1"/></pattern></defs>
+          <rect width="460" height="150" fill="url(#small-grid)"/>
+          <path d="M0 84H56l8-3 8 4h37l8-2 7 2h40l8-2 7 2h40l9-4 7 9 8-20 8 44 11-75 10 46 8-8 9 8h52l9-3 7 3h48l9-2 7 2h37" fill="none" stroke="#d94d37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="254" cy="40" r="3" fill="#d94d37"/>
+        </svg>
+        <div class="trace-labels"><span>0 ms</span><span>250 ms</span><span>500 ms</span><span>750 ms</span></div>
+      </div>
+      <div class="contents">
+        <p class="topic-label">Inside the folder</p>
+        <ul>
+          <li><span class="index">04</span> ECG analysis &amp; HRV</li>
+          <li><span class="index">02</span> PPG pulse features</li>
+          <li><span class="index">01</span> Respiratory rate</li>
+          <li><span class="index">04</span> Discrete signal examples</li>
+        </ul>
+      </div>
+      <footer><a href="https://github.com/batha-kari/bsp">View source on GitHub ↗</a></footer>
+    </aside>
+  </main>
+</body>
+</html>

@@ -2,6 +2,10 @@
 
 A collection of Python signal-processing examples transcribed from a WhatsApp chat and organized by topic. The scripts retain the shared algorithms; machine-specific Windows file paths were replaced with repository-relative paths under `data/`.
 
+## Download page
+
+The project homepage is hosted on GitHub Pages: <https://batha-kari.github.io/bsp/>. Its download button retrieves the complete repository as a ZIP archive, which extracts into a `bsp-master/` folder.
+
 ## Requirements
 
 - Python 3.10+
